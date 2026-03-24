@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -14,15 +13,15 @@ int main() {
     srand(time(NULL));
 
     do {
-        printf("\n === MENU PRINCIPAL ===\n");
+        printf("\n   MENU PRINCIPAL  \n");
         printf("1 - Pergunta e Resposta\n");
         printf("2 - Cobra na Caixa\n");
         printf("3 - Gousmas War\n");
         printf("4 - Sair\n");
         printf("Escolha uma opcao: ");
-        
+       
         if (scanf("%d", &opcao) != 1) {
-            while(getchar() != '\n'); 
+            while(getchar() != '\n');
             continue;
         }
 
@@ -41,7 +40,8 @@ void perguntas() {
     int resposta;
     int repetir = 1;
     while (repetir == 1) {
-        printf("\n--- JOGO DE PERGUNTAS ---\n");
+    	system ("cls");
+        printf("\n   JOGO DE PERGUNTAS  \n");
         printf("Se hoje e segunda-feira, que dia sera depois de amanha?\n");
         printf("1) domingo | 2) terca | 3) quarta | 4) quinta\n> ");
         scanf("%d", &resposta);
@@ -51,9 +51,33 @@ void perguntas() {
         printf("1) EEB | 2) EBD | 3) FFB | 4) EBC\n> ");
         scanf("%d", &resposta);
         if (resposta == 1) printf("PARABENS!\n"); else printf("Errou!\n");
+        
+        printf ("estao em uma fila: pedro, lucas e marcos\n quem esta no meio?\n");
+       printf ("1)pedro\n 2) lucas\n 3) marcos\n 4)nao sei\n>");
+       scanf("%d", &resposta);
+       
+       if (resposta ==2) printf ("ACERTOOOOU\n");
+       else printf ("errou vei, besta demaais\n");
+       
+       printf ("qual o melhor anime do mundo?\n");
+      printf ("1) one piece\n 2)boku no hero\n 3) one punch man\n 4) naruto\n>");
+      scanf ("%d", &resposta);
+      
+      if (resposta==4) printf ("BOAA obv que e o naruto ne pae\n");
+      else printf ("nao vei, obv que naruto e o melhor do mundo\n");
+      
+      printf ("1- 4 - 9 -16 ... qual e o proximo\n");
+      printf ("1) 20\n 2) 21\n 3) 25\n 4) 24\n>");
+      scanf ("%d", &resposta);
+      
+      if (resposta==3) printf ("TOOOOP, ta manjando da matematica\n>");
+      else printf ("ohhh vei pensa mais um pouco\n");
 
         printf("\n1 - Jogar novamente\n2 - Menu\n> ");
         scanf("%d", &repetir);
+        
+       
+        
     }
 }
 
@@ -62,16 +86,19 @@ void cobraNaCaixa() {
     int repetir = 1;
     char nomes[7][30] = {"Batman", "Superman", "Spider", "IronMan", "Cap", "Thor", "Hulk"};
     while (repetir == 1) {
+    		system ("cls");
+    	printf ("\n   COBRA NA CAIXA   \n");
         int palpite, caixa_escolhida = 0, caixas[5] = {0}, abertas[5] = {0};
         int jogador1, jogador2, turno, botao, cobra;
-
+         printf ("jogador 1: escola seu nome: 1.Batman\n 2.Superman\n 3.Spider\n 4.IronMan\n 5.Cap\n 6.Thor\n 7.Hulk\n");
         printf("\nEscolha Jogador 1 (1-7): "); scanf("%d", &jogador1);
+        printf ("jogador 1: escola seu nome: 1.Batman\n 2.Superman\n 3.Spider\n 4.IronMan\n 5.Cap\n 6.Thor\n 7.Hulk\n");
         printf("Escolha Jogador 2 (1-7): "); scanf("%d", &jogador2);
         turno = rand() % 2;
-        botao = rand() % 5; caixas[botao] = 1; 
+        botao = rand() % 5; caixas[botao] = 1;
         cobra = rand() % 5;
         while (botao == cobra) cobra = rand() % 5;
-        caixas[cobra] = 2; 
+        caixas[cobra] = 2;
 
         while (caixa_escolhida == 0) {
             printf("\nTurno de %s. Caixa (1-5): ", nomes[((turno == 0) ? jogador1 : jogador2) - 1]);
@@ -85,7 +112,8 @@ void cobraNaCaixa() {
             else if (caixa_escolhida == 1) printf("VENCEU!\n");
             else printf("COBRA! PERDEU!\n");
         }
-        printf("\n1-Denovo 2-Menu: "); scanf("%d", &repetir);
+       printf("\n1 - Jogar novamente\n2 - Menu\n> ");
+	    scanf("%d", &repetir);
     }
 }
 
@@ -93,13 +121,15 @@ void cobraNaCaixa() {
 void gousmasWar() {
     int repetir = 1;
     while (repetir == 1) {
+    	printf ("\n   GOUSMAS WAR   \n");
+    		system ("cls");
         int j1[2] = {1, 1}, j2[2] = {1, 1};
         int ativo1[2] = {1, 1}, ativo2[2] = {1, 1};
-        int turno = 0; 
+        int turno = 0;
 
         while (1) {
             int acao, a, t, valor;
-            printf("\n--- GOUSMAS WAR ---\n");
+            printf("\n     GOUSMAS WAR  \n");
             printf("J1: G1[%d]%s | G2[%d]%s\n", j1[0], ativo1[0]?"VIVA":"MORTE", j1[1], ativo1[1]?"VIVA":"MORTE");
             printf("J2: G1[%d]%s | G2[%d]%s\n", j2[0], ativo2[0]?"VIVA":"MORTE", j2[1], ativo2[1]?"VIVA":"MORTE");
             printf("Turno J%d. 1-Atacar 2-Dividir: ", turno + 1);
@@ -117,7 +147,7 @@ void gousmasWar() {
                     if (j1[t] > 5) { ativo1[t] = 0; j1[t] = 0; }
                     turno = 0;
                 } else printf("Invalido!\n");
-            } 
+            }
             else if (acao == 2) {
                 printf("Doadora(1-2), Receptora(1-2) e Valor: ");
                 scanf("%d %d %d", &a, &t, &valor); a--; t--;
@@ -135,6 +165,7 @@ void gousmasWar() {
             if (!ativo1[0] && !ativo1[1]) { printf("J2 VENCEU!\n"); break; }
             if (!ativo2[0] && !ativo2[1]) { printf("J1 VENCEU!\n"); break; }
         }
-        printf("\n1-Jogar denovo 2-Menu: "); scanf("%d", &repetir);
+       printf("\n1 - Jogar novamente\n2 - Menu\n> ");
+	    scanf("%d", &repetir);
     }
 }
